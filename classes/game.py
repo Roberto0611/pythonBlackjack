@@ -15,6 +15,10 @@ class Game:
             # Place bets
             print(f"{self.gambler.name}'s Current money: {self.gambler.currentMoney()}$")
 
+            if self.gambler.currentMoney() == 0:
+                print("Sorry you don't have enough money to play :(")
+                break
+
             while True:
                 self.gambler.placeBet(int(input('Place your bet $')));
                 if self.gambler.playerBet > self.gambler.money:
