@@ -1,5 +1,6 @@
 import random
-from classes import player
+import time
+
 
 class Deck:
     def __init__(self):
@@ -12,6 +13,7 @@ class Deck:
         if len(self.deck) == 0:
             raise ValueError("The deck is empty!")
         else:
+            time.sleep(1.5)
             self.card = self.deck.pop()
             player.addToHand(self.card)
             return self.card
