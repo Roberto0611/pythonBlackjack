@@ -1,7 +1,9 @@
 class Player:
-    def __init__(self, name):
+    def __init__(self, name, startingMoney=None):
         self.name = name
         self.hand = []
+        self.money = startingMoney if startingMoney is not None else 9999
+        self.playerBet = 0;
 
         self.card_values = {'Ace of Hearts': 11, '2 of Hearts': 2, '3 of Hearts': 3, '4 of Hearts': 4, '5 of Hearts': 5,'6 of Hearts': 6, '7 of Hearts': 7, '8 of Hearts': 8, '9 of Hearts': 9, '10 of Hearts': 10,
             'Jack of Hearts': 10, 'Queen of Hearts': 10, 'King of Hearts': 10,
@@ -52,4 +54,9 @@ class Player:
 
     def isBusted(self):
         return self.checkHandValue() > 21    
-        
+    
+    def placeBet(self,bet):
+        self.playerBet = bet
+
+    def currentMoney(self):
+        return self.money;
