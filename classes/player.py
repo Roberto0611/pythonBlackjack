@@ -26,12 +26,30 @@ class Player:
         return self.hand
     
     def checkHandValue(self):
-        self.handValue = 0;
+        self.handValue = 0
+        num_aces = 0
 
         for self.card in self.hand:
-            self.handValue += self.card_values[self.card];
+            card_value = self.card_values[self.card]
+            self.handValue += card_value
+
+            if self.card.startswith('Ace'):
+                num_aces += 1
+
+        while num_aces > 0 and self.handValue > 21:
+            self.handValue -= 10  
+            num_aces -= 1  
+
         return self.handValue
+    
+        # Search
     
     def restartHand(self):
         self.hand = []
-            
+
+    def hasBlackjack(self):
+        return self.checkHandValue() == 21
+
+    def isBusted(self):
+        return self.checkHandValue() > 21    
+        
