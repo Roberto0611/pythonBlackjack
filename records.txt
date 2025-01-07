@@ -1,0 +1,4 @@
+#------------- THIS FILE KEEPS THE LOCAL RECORD OF THE GAME -------------#
+# The 3th[2] line is the user and the 4th[3] is the money when finishing the game
+noRecord
+noRecord
