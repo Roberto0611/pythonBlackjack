@@ -1,9 +1,17 @@
 from classes import deck
 from classes import player
+from classes.records import *
 
 class Game:
     def __init__(self):
-        self.gambler = player.Player(input("Welcome to Blackjack 21, to start input your name\n"),100)
+
+        if returnRecord()[1] != "noRecord":
+            print("Welcome to Blackjack 21, this are the actual records:")
+            print(checkRecord())
+        else:
+            print("Welcome to Blackjack 21")
+
+        self.gambler = player.Player(input("To start input your name\n"),100)
         self.dealer = player.Player("Dealer")
         self.pack = deck.Deck()
 
@@ -37,7 +45,12 @@ class Game:
                 self.dealer_turn()
 
             if not self.play_again():
+                    # Check the record returnRecord()[1]
+                    if returnRecord()[1] == "noRecord" or self.gambler.money > int(returnRecord()[1]):
+                        stablishRecord(self.gambler.name,self.gambler.money)
+                        print(f'NEW RECORD REGISTERED!!, Thanks for playing :), your currency was {self.gambler.money}')
                     print(f'Thanks for playing :), your currency was {self.gambler.money}')
+                    input("click any key to exit")
                     break
     
     def setup_round(self):

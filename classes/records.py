@@ -13,6 +13,19 @@ def checkRecord():
         return "Theres no records"
     else:
         return f'Record by user: {userRecord}the final money was: ${moneyRecord}'
+    
+def returnRecord():
+    # Open the record file
+    recordFile = open("records.txt","r")
+    
+    # Read lines
+    lines = recordFile.readlines()
+
+    # Save the data into a list
+
+    recordData = [lines[2].strip(),lines[3].strip()]
+
+    return recordData
 
 def stablishRecord(user,record):
 
