@@ -28,9 +28,18 @@ class Game:
                 break
 
             while True:
-                self.gambler.placeBet(int(input('Place your bet $')));
+
+                try:
+                    self.gambler.placeBet(int(input('Place your bet $')));
+                except:
+                    print('Porfavor ingrese un valor numerico valido')
+                    continue
+
                 if self.gambler.playerBet > self.gambler.money:
                     print(f'Not enough money, your current balance is {self.gambler.money}')
+                    continue
+                elif self.gambler.playerBet <= 0:
+                    print(f'Porfavor ingresa un numero mayor a 0')
                     continue
                 else:
                     self.gambler.money -= self.gambler.playerBet
